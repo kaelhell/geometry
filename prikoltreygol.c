@@ -55,6 +55,7 @@ int main()
 		if (((t.a.x==t.b.x)&&(t.a.x==t.c.x)) || ((t.a.y==t.b.y)&&(t.a.y==t.c.y)))
 		{
 			printf("this is not a triangle");
+			goto start;
 		}
 		else
 		{
