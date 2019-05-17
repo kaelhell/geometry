@@ -6,6 +6,18 @@
 #include <stdlib.h>
 #include <string.h>
 
+double sqrt(double fg)
+{ 
+	double n = fg / 2.0;
+	double lstX = 0.0; 
+	while(n != lstX)  
+	{
+		lstX = n;
+		n = (n + fg/n) / 2.0; 
+	}
+	return n;
+}
+
 int min(int a, int b)
 {
     if (a < b)
