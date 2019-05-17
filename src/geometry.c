@@ -7,15 +7,14 @@
 #include <string.h>
 
 double sqrt(double fg)
-{ 
-	double n = fg / 2.0;
-	double lstX = 0.0; 
-	while(n != lstX)  
-	{
-		lstX = n;
-		n = (n + fg/n) / 2.0; 
-	}
-	return n;
+{
+    double n = fg / 2.0;
+    double lstX = 0.0;
+    while (n != lstX) {
+        lstX = n;
+        n = (n + fg / n) / 2.0;
+    }
+    return n;
 }
 
 int min(int a, int b)
@@ -260,12 +259,12 @@ void Vector(Figure* new, double* a, double* b, double* c)
             *c = 0;
         return;
     } else if (new->type == TRIANGLE && new->size >= 8) {
-		double c20 = new->c[2] - new->c[0];
-		double c31 = new->c[3] - new->c[1];
-		double c42 = new->c[4] - new->c[2];
-		double c53 = new->c[5] - new->c[3];
-		double c04 = new->c[0] - new->c[4];
-		double c15 = new->c[1] - new->c[5];
+        double c20 = new->c[2] - new->c[0];
+        double c31 = new->c[3] - new->c[1];
+        double c42 = new->c[4] - new->c[2];
+        double c53 = new->c[5] - new->c[3];
+        double c04 = new->c[0] - new->c[4];
+        double c15 = new->c[1] - new->c[5];
         *a = sqrt(c20 * c20 + c31 * c31);
         *b = sqrt(c42 * c42 + c53 * c53);
         *c = sqrt(c04 * c04 + c15 * c15);
