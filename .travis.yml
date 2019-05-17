@@ -7,3 +7,6 @@ script:
 compiler: gcc
 
 dist: xenial
+
+git:
+  depth: 10
