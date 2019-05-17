@@ -1,6 +1,5 @@
 language: c
 dist: xenial
-
 compiler: gcc
 
 git:
