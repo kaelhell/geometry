@@ -2,6 +2,7 @@ language: c
 
 script:
   - make && make all
+  - git ls-files src/*.c | xargs clang-format -i src/*.c && git diff --exit-code
 
 compiler: gcc
 
