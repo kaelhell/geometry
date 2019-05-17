@@ -130,7 +130,7 @@ void InSecCirTr(Figure* a, Figure* b, int a_1, int b_1)
                 for (int i = 0; i < 6; i += 2) {
                     A1 = a->c[2] * cos(0);
                     B1 = a->c[2] * sin(0);
-                    C1 = pow(a->c[2], 2);
+                    C1 = a->c[2] * a->c[2];
                     A2 = b->c[1 + i] - b->c[3 + i],
                     B2 = b->c[2 + i] - a->c[0 + i],
                     C2 = -A2 * b->c[0 + i] - B2 * b->c[1 + i];
@@ -248,15 +248,15 @@ void Vector(Figure* new, double* a, double* b, double* c)
             *c = 0;
         return;
     } else if (new->type == TRIANGLE && new->size >= 8) {
-        *a
-                = sqrt(pow((new->c[2] - new->c[0]), 2.0)
-                       + pow((new->c[3] - new->c[1]), 2.0));
-        *b
-                = sqrt(pow((new->c[4] - new->c[2]), 2.0)
-                       + pow((new->c[5] - new->c[3]), 2.0));
-        *c
-                = sqrt(pow((new->c[0] - new->c[4]), 2.0)
-                       + pow((new->c[1] - new->c[5]), 2.0));
+		double c20 = new->c[2] - new->c[0];
+		double c31 = new->c[3] - new->c[1];
+		double c42 = new->c[4] - new->c[2];
+		double c53 = new->c[5] - new->c[3];
+		double c04 = new->c[0] - new->c[4];
+		double c15 = new->c[1] - new->c[5];
+        *a = sqrt(c20 * c20 + c31 * c31);
+        *b = sqrt(c42 * c42 + c53 * c53);
+        *c = sqrt(c04 * c04 + c15 * c15);
         return;
     }
     *a = *b = *c = 0;
