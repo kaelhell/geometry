@@ -1,10 +1,9 @@
 language: c
-dist: xenial
-compiler: gcc
-
-git:
-  - depth: 10
 
 script:
   - make && make all
   - git ls-files src/ | xargs clang-format -i && git diff --exit-code
+
+compiler: gcc
+
+dist: xenial
