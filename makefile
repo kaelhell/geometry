@@ -25,8 +25,8 @@ dirs:
 	mkdir -p $(OBJDIR) $(BINDIR) $(DEPDIR)
  
 .PHONY: clean
-clean:
-	rm -f $(BINDIR)* $(OBJDIR)*.o $(DEPDIR)*.d
+//clean:
+	//rm -f $(BINDIR)* $(OBJDIR)*.o $(DEPDIR)*.d
    
 include $(DEP_FILES)
 
@@ -49,6 +49,7 @@ $(OBJ_TEST_DIR)/parser.o: $(TEST_DIR)/parser.c
 	gcc -c $(TEST_DIR)/parser.c -o  $(OBJ_TEST_DIR)/parser.o $(FLAG)
 
 clean:
+	rm -f $(BINDIR)* $(OBJDIR)*.o $(DEPDIR)*.d
 	find -name "*.o" -exec rm -rf {} +
 	rm -rf ./bin/geometry
 
