@@ -29,3 +29,36 @@ clean:
 	rm -f $(BINDIR)* $(OBJDIR)*.o $(DEPDIR)*.d
    
 include $(DEP_FILES)
+
+
+
+
+$(BIN_DIR)/testing: $(OBJ_TEST_DIR)/main.o $(OBJ_TEST_DIR)/parser.o $(OBJ_TEST_DIR)/geometry.o $(OBJ_DIR)/geometry.o
+	gcc $(OBJ_TEST_DIR)/main.o  $(OBJ_TEST_DIR)/geometry.o  $(OBJ_TEST_DIR)/parser.o $(OBJ_DIR)/geometry.o -o $(BIN_DIR)/testing -lm $(FLAG)
+
+
+$(OBJ_TEST_DIR)/main.o: $(TEST_DIR)/main.c
+	gcc -c $(TEST_DIR)/main.c -o  $(OBJ_TEST_DIR)/main.o $(FLAG)
+
+
+$(OBJ_TEST_DIR)/geometry.o: $(TEST_DIR)/geometry.c
+	gcc -c $(TEST_DIR)/geometry.c -o  $(OBJ_TEST_DIR)/geometry.o -lm $(FLAG)
+
+
+$(OBJ_TEST_DIR)/parser.o: $(TEST_DIR)/parser.c
+	gcc -c $(TEST_DIR)/parser.c -o  $(OBJ_TEST_DIR)/parser.o $(FLAG)
+
+clean:
+	find -name "*.o" -exec rm -rf {} +
+	rm -rf ./bin/geometry
+
+
+run: all
+	$(BIN_DIR)/geometry
+	$(BIN_DIR)/testing
+
+install:
+	sudo cp ./bin/geometry /usr/bin/geometry
+
+uninstall:
+	sudo rm -f /usr/bin/geometry
